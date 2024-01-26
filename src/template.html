@@ -3,8 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
+    <title>BattleShip</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="Menu">
+      <p id="gameTitle">BattleShip</p>
+      <input type="button" id="playBtn" value="Play!!!" />
+    </div>
+
+    <div class="game hidden">
+      <form action="" id="shipsSetUpForm">
+        <label for="XcoordinateInput">X</label>
+        <input
+          type="text"
+          maxlength="1"
+          name="XcoordinateInput"
+          id="XcoordinateInput"
+          required
+        />
+        <label for="YcoordinateInput">Y</label>
+        <input
+          type="text"
+          maxlength="1"
+          name="YcoordinateInput"
+          id="YcoordinateInput"
+          required
+        />
+
+        <label for="rotationInput">Choose rotation:</label>
+        <select id="rotationInput" name="rotationInput">
+          <option value="horizontal">horizontal</option>
+          <option value="vertical">vertical</option>
+        </select>
+        <input type="button" id="submitCoordinateBtn" value="confirm" />
+
+        <script>
+          const inputs = document.querySelectorAll(".game>form>input");
+          inputs.forEach((input) => {
+            input.addEventListener("keyup", () => {
+              if (input.value.length === 1) {
+                input.nextElementSibling.focus();
+              }
+            });
+          });
+        </script>
+      </form>
+
+      <div id="playerGrid" class="grid"></div>
+    </div>
   </body>
 </html>

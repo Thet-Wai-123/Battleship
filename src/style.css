@@ -1,0 +1,46 @@
+.grid{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    border: 1px solid black;
+    grid-gap: 1px;
+    background-color: black;
+}
+
+.grid > *{
+    background-color: white;
+}
+
+.Menu{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#gameTitle,#playBtn{
+    font-size: 5em;
+}
+
+div.hidden{
+    display:none;
+}
+
+.game{
+    display:grid;
+    grid-template-columns: 2fr 5fr;
+}
+
+.game>form>input{
+    width: 30%
+}
+.game>form>input[type="button"]{
+    margin: 10px;
+}
+
+.shipHere{
+    background-color: blue;
+}
+

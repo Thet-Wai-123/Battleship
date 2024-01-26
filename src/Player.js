@@ -1,3 +1,5 @@
+import getRandomInt from "./Randomizer.js";
+
 export class Player {
   constructor() {}
 
@@ -27,12 +29,4 @@ export class AI extends Player {
     this.attemptedShots.push(randomSpot);
     return { x, y };
   }
-  placeShipsRandomly(){
-    
-  }
-  
-}
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
 }
