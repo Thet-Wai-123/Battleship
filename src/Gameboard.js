@@ -11,7 +11,7 @@ export default class Gameboard {
     let length = ship.length;
     if (direction === "horizontal") {
       //check it doensn't oveflow
-      if ((x + length > 10) || (y>=10)) {
+      if ((x<0) || (y<0) || (x + length > 10) || (y>=10)) {
         throw new Error("invalid: doesn't fit into grid");
       }
       //check that the spots are not already taken
@@ -24,7 +24,7 @@ export default class Gameboard {
         this.grid[x + i][y] = this.ships.length; //will later access specific ships using length in array.
       }
     } else if (direction === "vertical") {
-      if (y + length > 10|| (x>=10)) {
+      if ((x<0) || (y<0) || y + length > 10|| (x>=10)) {
         throw new Error("invalid: doesn't fit into grid");
       }
       for (let i = 0; i < length; i++) {

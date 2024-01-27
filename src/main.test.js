@@ -3,21 +3,30 @@ import Gameboard from "./Gameboard.js";
 import { Player, AI } from "./Player.js";
 import initializeGame from "./initializeGame.js";
 import getRandomInt from "./Randomizer.js";
+import createNewGridUI from "./createNewGrid.js";
 
 const numOfShips = 5;
 const gridLength = 10;
 
-const playBtn = document.getElementById("playBtn");
-playBtn.addEventListener("click", () => {
-  startGame();
-});
+// const playBtn = document.getElementById("playBtn");
+// playBtn.addEventListener("click", () => {
+//   main();
+// });
+//uncomment this and go uncomment also in template.html!
 
-async function startGame() {
+main();
+
+async function main() {
   const { player, computer, playerGameBoard, computerGameBoard } =
-    initializeGame();
+  initializeGame();
   await setUpShipPhase(playerGameBoard, computerGameBoard);
-  console.log("finished setting up Ships");
-  
+  startGame();
+}
+
+function startGame() {
+  //hide the menu
+  const menu = document.getElementById("shipsSetUpForm");
+  menu.classList.add("hidden");
 }
 
 function setUpShipPhase(playerGameBoard, computerGameBoard) {
@@ -33,7 +42,7 @@ function setUpShipPhase(playerGameBoard, computerGameBoard) {
       try {
         playerGameBoard.placeShip(playerShips[playerIndex], x, y, direction);
         playerIndex++;
-        updateGridUI(playerGameBoard, computerGameBoard);
+        updateGridUI(playerGameBoard, "player");
         resetField();
       } catch (error) {
         alert(error);
@@ -61,7 +70,7 @@ function setUpShipPhase(playerGameBoard, computerGameBoard) {
         computerIndex++;
       } catch (error) {}
     }
-    console.log(computerGameBoard)
+    updateGridUI(computerGameBoard, "computer")
   });
 }
 
@@ -79,17 +88,18 @@ function resetField() {
   form.reset();
 }
 
-function updateGridUI(playerGameBoard, computerGameBoard) {
-  const playerGridUI = document.getElementById("playerGrid");
+function updateGridUI(gameBoard, user) {
+  const GridUI = document.getElementById( user + "Grid");
   for (let row = 0; row < gridLength; row++) {
     for (let column = 0; column < gridLength; column++) {
-      if (Number.isInteger(playerGameBoard.grid[column][row])) {
+      if (Number.isInteger(gameBoard.grid[column][row])) {
         const cellNum = row * 10 + column;
-        const targetdCell = playerGridUI.querySelector(
-          ".playerIndex" + cellNum
+        const targetdCell = GridUI.querySelector(
+          "." + user + "Index" + cellNum
         );
         targetdCell.classList.add("shipHere");
       }
     }
   }
 }
+

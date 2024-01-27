@@ -6,6 +6,8 @@
     border: 1px solid black;
     grid-gap: 1px;
     background-color: black;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .grid > *{
@@ -24,13 +26,13 @@
     font-size: 5em;
 }
 
-div.hidden{
+.hidden{
     display:none;
 }
 
 .game{
     display:grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .game>form>input{
@@ -44,3 +46,14 @@ div.hidden{
     background-color: blue;
 }
 
+.hover{
+    background-color: grey;
+}
+
+.hit{
+    background-color: red;
+}
+
+.missed{
+    background-color: yellow;
+}

@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="Menu">
+    <div class="Menu hidden">
       <p id="gameTitle">BattleShip</p>
       <input type="button" id="playBtn" value="Play!!!" />
     </div>
 
-    <div class="game hidden">
+    <div class="game">
       <form action="" id="shipsSetUpForm">
         <label for="XcoordinateInput">X</label>
         <input
@@ -36,7 +36,7 @@
           <option value="horizontal">horizontal</option>
           <option value="vertical">vertical</option>
         </select>
-        <input type="button" id="submitCoordinateBtn" value="confirm" />
+        <input type="submit" id="submitCoordinateBtn" value="confirm" />
 
         <script>
           const inputs = document.querySelectorAll(".game>form>input");
@@ -49,8 +49,6 @@
           });
         </script>
       </form>
-
-      <div id="playerGrid" class="grid"></div>
     </div>
   </body>
 </html>
