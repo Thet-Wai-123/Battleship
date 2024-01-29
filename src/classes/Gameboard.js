@@ -1,9 +1,6 @@
 export default class Gameboard {
   constructor() {
     this.grid = Array.from(Array(10), () => Array(10).fill(false));
-    this.attemptedAttacks = Array.from(Array(10), () =>
-      new Array(10).fill("unknown")
-    );
     this.ships = [];
   }
 
@@ -41,11 +38,11 @@ export default class Gameboard {
   }
   receiveAttack(x, y) {
     if (this.grid[x][y] === false) {
-      this.attemptedAttacks[x][y] = "missed";
+      return "missed";
     } else {
-      this.attemptedAttacks[x][y] = "hit";
       const shipAtTarget = this.ships[this.grid[x][y]];
       shipAtTarget.hit();
+      return "hit";
     }
   }
 

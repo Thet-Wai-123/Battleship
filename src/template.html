@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="Menu hidden">
+    <div class="Menu">
       <p id="gameTitle">BattleShip</p>
       <input type="button" id="playBtn" value="Play!!!" />
     </div>
 
-    <div class="game">
+    <div class="Game hidden">
       <form action="" id="shipsSetUpForm">
         <label for="XcoordinateInput">X</label>
         <input
@@ -39,7 +39,7 @@
         <input type="submit" id="submitCoordinateBtn" value="confirm" />
 
         <script>
-          const inputs = document.querySelectorAll(".game>form>input");
+          const inputs = document.querySelectorAll(".Game>form>input");
           inputs.forEach((input) => {
             input.addEventListener("keyup", () => {
               if (input.value.length === 1) {

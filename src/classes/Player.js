@@ -1,21 +1,16 @@
-import getRandomInt from "./Randomizer.js";
+import getRandomInt from "../functions/Randomizer.js";
 
 export class Player {
   constructor() {}
 
-  attackEnemy(gameBoard, x, y) {
-    gameBoard.receiveAttack(x, y);
+  attackEnemyBoard(gameBoard, x, y) {
+    return gameBoard.receiveAttack(x, y);
   }
 }
 
 export class AI extends Player {
   //need to implement putting random boat
   attemptedShots = [];
-
-  computerTurn(gameBoard) {
-    let coordinate = this.getNewRandomSpot();
-    this.attackEnemy(gameBoard, coordinate["x"], coordinate["y"]);
-  }
 
   getNewRandomSpot() {
     let randomSpot;

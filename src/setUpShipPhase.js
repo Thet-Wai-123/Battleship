@@ -1,35 +1,10 @@
-import Ship from "./Ship.js";
-import Gameboard from "./Gameboard.js";
-import { Player, AI } from "./Player.js";
-import initializeGame from "./initializeGame.js";
-import getRandomInt from "./Randomizer.js";
-import createNewGridUI from "./createNewGrid.js";
+import Ship from "./classes/Ship.js";
+import getRandomInt from "./functions/Randomizer.js";
 
 const numOfShips = 5;
 const gridLength = 10;
 
-// const playBtn = document.getElementById("playBtn");
-// playBtn.addEventListener("click", () => {
-//   main();
-// });
-//uncomment this and go uncomment also in template.html!
-
-main();
-
-async function main() {
-  const { player, computer, playerGameBoard, computerGameBoard } =
-  initializeGame();
-  await setUpShipPhase(playerGameBoard, computerGameBoard);
-  startGame();
-}
-
-function startGame() {
-  //hide the menu
-  const menu = document.getElementById("shipsSetUpForm");
-  menu.classList.add("hidden");
-}
-
-function setUpShipPhase(playerGameBoard, computerGameBoard) {
+export default function setUpShipPhase(playerGameBoard, computerGameBoard) {
   return new Promise((resolve) => {
     //player
     let playerIndex = 0;
@@ -48,7 +23,7 @@ function setUpShipPhase(playerGameBoard, computerGameBoard) {
         alert(error);
       }
 
-      if (playerIndex === numOfShips - 1) {
+      if (playerIndex === numOfShips) {
         resolve();
       }
     });
@@ -102,4 +77,3 @@ function updateGridUI(gameBoard, user) {
     }
   }
 }
-
